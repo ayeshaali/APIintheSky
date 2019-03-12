@@ -39,16 +39,6 @@ exports.createUser = function(user_id, user_password,first_name,last_name, callb
         var new_obj = {
           "name": user_id,
           "pswd": user_password,
-          "total": 0,
-          "wins": 0,
-          "losses": 0,
-          "rock": 0,
-          "paper": 0,
-          "scissors": 0,
-          "first": first_name,
-          "last": last_name,
-            "creation": date,
-            "update": date
         }
         dataJS.createRow(new_obj, function(){
           dataJS.log("Calling second callback")
@@ -73,67 +63,4 @@ exports.updateUser = function(user_id, updates, callback) {
     console.log("doing next");
     callback();
   });
-}
-
-//handles a throw
-exports.handleThrow = function(userWeapon, villain, villainWeapon, villainPrevious, userPrevious){
-    dataJS.log("handleThrow at"+ new Date());
-    villainWeapon=villainJS.villainStrategies(villain,villainPrevious,userPrevious,userWeapon);
-    var result = [];
-    switch(userWeapon){
-        case villainWeapon:
-          result[0] = "drew";
-          break;
-        case villainJS.winAgainst(villainWeapon):
-          result[0] = "won";
-          break;
-        case villainJS.loseAgainst(villainWeapon):
-          result[0] = "lost";
-          break;
-    }
-
-    result[1]=villainWeapon;
-    return result;
-    fs.writeFileSync("data/villainPrevious.txt",villainWeapon,'utf8')
-    fs.writeFileSync("data/userPrevious.txt",userWeapon,'utf8')
-}
-
-exports.returnDate=function(){
-    return returnDate();
-}
-function returnDate(){
-    var d=new Date();
-    var day=["Sunday","Monday","Tuesday","Wednesday","Thursday", "Friday", "Saturday"][d.getDay()];
-    var month=["January","February","March","April", "May", "June","July","August","September", "October", "November","December"][d.getMonth()];
-    return (""+day+" "+month+" "+addsuffix(d.getDate())+", "+ d.getFullYear()+"  "+d.getHours()+":"+fix(d.getMinutes())+":"+fix(d.getSeconds()));
-}
-function fix(n){
-    return ("0" + n).slice(-2);
-}
-function addsuffix(i) {
-    var a=i%100;
-    if (a==11||a==12||a==13){
-        return i+"th";
-    }
-    switch(i%10){
-        case 1:
-            return i+"st";
-        case 2:
-            return i+"nd";
-        case 3:
-            return i+"nd"
-    }
-    return i+"th";
-}
-
-//bug testing (creates blank user)
-var createBlankUser= function(){
-  var user={
-    name:"notarealuser",
-    games_played:"test",
-    lost:"test",
-    won:"test",
-    password:"test"
-  };
-  return user;
 }
