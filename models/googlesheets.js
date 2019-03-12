@@ -14,6 +14,24 @@ exports.loadGoogle = function(filename, callback) {
   });
 }
 
+
+exports.getDataJob = function(p,p1,p2,p3,p4,p5){
+  var a = [p1,p2,p3,p4,p5];
+
+  //long function
+}
+
+exports.getDataProgram = function(p,p1,p2,p3,p4,p5){
+  var a = [p1,p2,p3,p4,p5]
+}
+
+
+
+
+
+
+
+
 //Updates a row
 exports.updateRow=function(filename, userName, newStuff, callback){
   var sheet;
@@ -132,7 +150,7 @@ exports.loadUsage=function(callback){
     doc.useServiceAccountAuth(creds, function (err) {
         doc.getInfo(function(err,info){
         sheet=info.worksheets[2];
-            
+
         sheet.getCells({
         'min-row':2,
         'min-col': 4,
@@ -142,11 +160,11 @@ exports.loadUsage=function(callback){
             for(var i=0; i<7;i++){
             arr[i]=parseInt(cells[i].value);
             }
-            callback(arr);  
+            callback(arr);
       });
-            
+
       });
-         
+
   });
-   
+
 }
