@@ -1,6 +1,5 @@
 var fs = require("fs");
 var dataJS = require(__dirname +'/data');
-var villainJS = require(__dirname +'/Villain');
 
 //gets a user
 exports.getUser = function(user_id, callback) {
