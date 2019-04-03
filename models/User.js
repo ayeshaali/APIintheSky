@@ -1,9 +1,6 @@
 var fs = require("fs");
 var dataJS = require(__dirname +'/googlesheets');
-<<<<<<< HEAD
 
-=======
->>>>>>> 967fa76914b2c9655dc6fcb47fcd6e8b5b316894
 //gets a user
 exports.getUser = function(user_id, callback) {
   dataJS.log("getUser: "+user_id+" at "+ new Date());
@@ -18,42 +15,47 @@ exports.getUser = function(user_id, callback) {
     callback(user);
   });
 }
+
 //creates a user
 exports.createUser = function(user_id, user_password,first_name,last_name, callback) {
     dataJS.log("createUser: "+user_id+" at "+ new Date());
     var result = true;
     var feedbackN = 0;
-<<<<<<< HEAD
-    if (user_id==null||user_id==""||first_name==null||first_name==""||last_name==null||last_name==""||user_password==null||user_password==""||user_key==null){
-=======
     if (user_id==null||user_id==""||user_password==null||user_password==""){
->>>>>>> 967fa76914b2c9655dc6fcb47fcd6e8b5b316894
         dataJS.log("inv");
         result= false;
         feedbackN = 42;
     }
-
-    exports.getUser(user_id, function(user){
-      if (user.name != "notarealuser") {
-        result = false;
-        feedbackN = 10;
+    var user_key = makeid(10);
+    dataJS.getAllKeys(function(keys){
+      while (keys.includes(user_key)){
+        user_key = makeid(10);
       }
-
-      if (result) {
-        date=returnDate();
-        var new_obj = {
-          "name": user_id,
-          "pswd": user_password,
-          "key": user_key
+      
+      exports.getUser(user_id, function(user){
+        if (user.name != "notarealuser") {
+          result = false;
+          feedbackN = 10;
         }
-        dataJS.createRow(new_obj, function(){
-          dataJS.log("Calling second callback")
-          callback(true, feedbackN);
-        })
-      } else {
-        callback(false, feedbackN);
-      }
+
+        if (result) {
+          date=returnDate();
+          var new_obj = {
+            "name": user_id,
+            "pswd": user_password,
+            "key": user_key
+          }
+          dataJS.createRow(new_obj, function(){
+            dataJS.log("Calling second callback")
+            callback(true, feedbackN);
+          })
+        } else {
+          callback(false, feedbackN);
+        }
+      })
+      
     })
+    
 }
 
 //deletes a user
@@ -69,4 +71,14 @@ exports.updateUser = function(user_id, updates, callback) {
     console.log("doing next");
     callback();
   });
+}
+
+function makeid(length) {
+  var text = "";
+  var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  for (var i = 0; i < length; i++)
+    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+  return text;
 }
