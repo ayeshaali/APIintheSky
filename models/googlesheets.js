@@ -1,6 +1,6 @@
 var GoogleSpreadsheet = require('google-spreadsheet');
 var creds = require('../client_secret.json');
-var dataJS = require(__dirname +'/data');
+//var dataJS = require(__dirname +'/data');
 // Create a document object using the ID of the spreadsheet - obtained from its URL.
 var doc = new GoogleSpreadsheet('1DVgMG20OgfLR0leaJvzOiHDxp19EoyGKHTJxUCnxoX0');
 // Authenticate with the Google Spreadsheets API.
@@ -13,23 +13,6 @@ exports.loadGoogle = function(filename, callback) {
     });
   });
 }
-
-
-exports.getDataJob = function(p,p1,p2,p3,p4,p5){
-  var a = [p1,p2,p3,p4,p5];
-
-  //long function
-}
-
-exports.getDataProgram = function(p,p1,p2,p3,p4,p5){
-  var a = [p1,p2,p3,p4,p5]
-}
-
-
-
-
-
-
 
 
 //Updates a row

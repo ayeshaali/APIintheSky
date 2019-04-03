@@ -1,5 +1,5 @@
 var fs = require("fs");
-var dataJS = require(__dirname +'/data');
+var dataJS = require(__dirname +'/googlesheets');
 
 //gets a user
 exports.getUser = function(user_id, callback) {
@@ -21,7 +21,7 @@ exports.createUser = function(user_id, user_password,first_name,last_name, callb
     dataJS.log("createUser: "+user_id+" at "+ new Date());
     var result = true;
     var feedbackN = 0;
-    if (user_id==null||user_id==""||first_name==null||first_name==""||last_name==null||last_name==""||user_password==null||user_password==""){
+    if (user_id==null||user_id==""||first_name==null||first_name==""||last_name==null||last_name==""||user_password==null||user_password==""||user_key==null){
         dataJS.log("inv");
         result= false;
         feedbackN = 42;
@@ -38,6 +38,7 @@ exports.createUser = function(user_id, user_password,first_name,last_name, callb
         var new_obj = {
           "name": user_id,
           "pswd": user_password,
+          "key": user_key
         }
         dataJS.createRow(new_obj, function(){
           dataJS.log("Calling second callback")
