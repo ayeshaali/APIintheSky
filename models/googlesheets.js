@@ -78,3 +78,28 @@ exports.deleteRow = function(user_id, callback) {
     });
   });
 }
+
+exports.clearSheet = function(file, callback){
+  var sheet;
+  doc.useServiceAccountAuth(creds, function (err) {
+    doc.getInfo(function(err,info){
+      sheet=info.worksheets[file];
+      sheet.getCells({
+        'min-col': 1,
+        'max-col': 1,
+        'return-empty': true}, function(err, cells) {
+        for(var i=0; i<cells.length;i++){
+            var index = i;
+             sheet.getRows(function (err, rows) {
+               rows[i-1].del(function(err){
+                 callback();
+               });
+            });
+            break;
+          }
+        }
+      });
+    });
+  });
+
+}

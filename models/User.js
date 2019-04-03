@@ -14,7 +14,15 @@ exports.getUser = function(user_id, callback) {
     }
     callback(user);
   });
+  return true;
 }
+
+
+
+
+
+
+
 
 //creates a user
 exports.createUser = function(user_id, user_password,first_name,last_name, callback) {
@@ -31,7 +39,7 @@ exports.createUser = function(user_id, user_password,first_name,last_name, callb
       while (keys.includes(user_key)){
         user_key = makeid(10);
       }
-      
+
       exports.getUser(user_id, function(user){
         if (user.name != "notarealuser") {
           result = false;
@@ -53,9 +61,9 @@ exports.createUser = function(user_id, user_password,first_name,last_name, callb
           callback(false, feedbackN);
         }
       })
-      
+
     })
-    
+
 }
 
 //deletes a user
