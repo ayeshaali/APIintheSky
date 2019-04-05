@@ -95,7 +95,7 @@ exports.clearSheet = function(file, callback){
                  callback();
                });
             });
-            break;
+            //break;
           }
         }
       });
