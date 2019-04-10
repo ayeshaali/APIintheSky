@@ -1,7 +1,7 @@
 var express = require('express');
 var fs = require("fs");
 var router = express.Router();
-var userJS = require('../models/User');
+var Users = require('../models/User');
 
 //create account button-- renders user_details
 router.get('/user/new', function(req, res){
@@ -26,8 +26,9 @@ router.post('/users',function(req,res){
   var feedback = {
     failure: 0
   }
-  
+  console.log(feedback);
   Users.createUser(u.name, u.pswd, function(result, feedbackN){
+    console.log(result);
     if (result) {
       res.redirect('/');
     } else {
