@@ -3,9 +3,8 @@ var dataJS = require(__dirname +'/googlesheets');
 
 //gets a user
 exports.getUser = function(user_id, callback) {
-  dataJS.log("getUser: "+user_id+" at "+ new Date());
   var user = createBlankUser();
-  var all_users = dataJS.loadGoogle(1, function(all_users) {
+  var all_users = dataJS.loadGoogle(3, function(all_users) {
     for(var i=0; i<all_users.length; i++){
       if(all_users[i].name==user_id.trim()){
         user = all_users[i];
@@ -17,23 +16,15 @@ exports.getUser = function(user_id, callback) {
   return true;
 }
 
-
-
-
-
-
-
-
 //creates a user
-exports.createUser = function(user_id, user_password,first_name,last_name, callback) {
-    dataJS.log("createUser: "+user_id+" at "+ new Date());
+exports.createUser = function(name, pswd, callback) {
     var result = true;
     var feedbackN = 0;
-    if (user_id==null||user_id==""||user_password==null||user_password==""){
-        dataJS.log("inv");
+    if (name==null||name==""||pswd==null||pswd==""){
         result= false;
         feedbackN = 42;
     }
+    
     var user_key = makeid(10);
     dataJS.getAllKeys(function(keys){
       while (keys.includes(user_key)){
@@ -49,12 +40,11 @@ exports.createUser = function(user_id, user_password,first_name,last_name, callb
         if (result) {
           date=returnDate();
           var new_obj = {
-            "name": user_id,
-            "pswd": user_password,
+            "name": name,
+            "pswd": pswd,
             "key": user_key
           }
-          dataJS.createRow(new_obj, function(){
-            dataJS.log("Calling second callback")
+          dataJS.createRow(new_obj, 3, function(){
             callback(true, feedbackN);
           })
         } else {
@@ -68,14 +58,12 @@ exports.createUser = function(user_id, user_password,first_name,last_name, callb
 
 //deletes a user
 exports.deleteUser = function(user_id, callback) {
-  dataJS.log("deleteUser: "+user_id+" at "+ new Date());
   dataJS.deleteRow(user_id, callback)
 }
 
 //updates the date for a user
 exports.updateUser = function(user_id, updates, callback) {
-  dataJS.log("updateUser: "+user_id+" at "+ new Date());
-  dataJS.updateRow(0, user_id, updates, function(){
+  dataJS.updateRow(2, user_id, updates, function(){
     console.log("doing next");
     callback();
   });
@@ -89,3 +77,15 @@ function makeid(length) {
 
   return text;
 }
+
+var createBlankUser= function(){
+  var user={
+    name:"notarealuser",
+    games_played:"test",
+    lost:"test",
+    won:"test",
+    password:"test"
+  };
+  return user;
+}
+
