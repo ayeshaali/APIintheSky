@@ -11,6 +11,7 @@ var GSParser = require ('google-spreadsheets-parser');
 
 
 //Takes in a filename (sheet=1;sheet=2); param=Array of Parameters to filter, an apiKey and a callback function;
+//Function loads the Google Sheet --> Get the Rows --> Check the values of each row and pushes it to a JSONObj. Then we create a new arrays that filter through each of the parameters
 exports.ParamSelec = function(filename, param, apikey, callback){
   var jsonObj = {};
   var jsonArray = [];
@@ -30,7 +31,6 @@ exports.ParamSelec = function(filename, param, apikey, callback){
             }
           });
         });
-
     if(filename==1){
         var k = jsonArray.filter(function(w){
           return param.agency == w.agency;
@@ -66,7 +66,7 @@ exports.ParamSelec = function(filename, param, apikey, callback){
         return param.summary == w..summary;
       });
     }
-  callback();
+  callback(); //see if this is necessary
   return finalJSON;
   }
 else{
@@ -84,106 +84,3 @@ function checkAPI(apikey){
   //put something in here to check the API key
 }
 console.log("Truth for API Check" + truth);
-
-
-
-
-
-//---------DELETED CODE-----------------------------------------------------------------------
-//This takes in a CSV(Jobs/Programs), a Sheet to Edit, An APIKEY and a callback function.
-//First you check the API key to load the page. If the k contains. We clear the sheet off screen and then parse the CSV and create a sheet row by row.
-/*
-exports.loadSheetToPage = function(csv, filename, apikey, callback){
-var k = checkAPI(apikey);
-if(k==true){
-  dataJS.clearSheet(filename, function(){
-    Papa.parse((this.csv).files[0],{ //parses big files by step
-      step:function(row){
-      dataJS.loadGoogle(filename, function(){
-        dataJS.createRow(filename, row, function(){
-          console.log("Row has been added to csv");
-        });
-      });
-      },
-      complete:function(){
-        //convert to JSON
-        console.log("This parse has been completed and loadSheet");
-        //create Parameters
-      }
-    });
-});
-  callback();
-}
-else{
-  //return error;
-}
-}
-//This takes in a CSV, filename, an array of parameters, an apikey and a callback.
-//It checks to see if APIkey works, then we clear sheet, parse the CSV and run a for loop to check if each parameter in the row "matches" the param array. We will ahve to figure that out to compare data but if it's true for how many ever elemtns in array. The info will be added by a row.
-exports.ParamSelec = function(filename, headerlist, param, apikey, callback){
-var JSONObject  = {};
-  var k = checkAPI(apikey);
-    if(k==true){
-      dataJS.loadGoogle(filename,function(){
-        doc.getRows(filename, {query:} function(err,rows){
-
-
-      });
-
-
-          for(var i=0; i<rows.length; i++){
-            doc.getCells(filename,{'min-col': param[0], 'max-col': param[param.length]}, function(err, cells){
-
-            });
-          }
-        });
-      });
-      */
-    });
-}
-
-
-
-
-/*
-exports.selectParameter= function(csv, filename, param, apikey, callback){
-  //var meetsConditions = false;
-  var k = checkAPI(apikey);
-  if(k==true){
-      //dataJS.clearSheet(filename,function(){
-        Papa.parse((this.csv).files[0], {
-          step: function(row){
-            for(var i=0; i<param.length; i++){
-              doc.getCells(1, {'min-col': param[0], 'max-col': param[param.length]}, function(err, cells){
-                  if(cells[i] == param[i]){
-                    if(i==param.length){
-                      //append row to JSON object.
-                      /*
-                        dataJS.createRow(this.filename, this.row, function(){
-                          console.log("Row has been added to CSV with Param selector");
-                        });
-
-                    }
-                    else{
-
-                      continue;
-                    }
-                  }
-                  else{
-                    break;
-                  }
-              });
-            }
-          },
-          complete: function(){
-            console.log("This parse and clear has been complete");
-          }
-        });
-    //  });
-    callback();
-  }
-  else{
-    //return error;
-  }
-}
-*/
