@@ -35,19 +35,19 @@ if(k==true){
 
 if(filename==1){
     var k = jsonArray.filter(function(w){
-      return param.agency == jsonObj.agency;
+      return param.agency == jsonObj[w].agency;
     });
     var k1 = k.filter(function(w)){
-      return param.business_title = jsonObj.business_title;
+      return param.business_title == k[w].business_title;
     });
     var k2 = k1.filter(function(w)){
-      return param.job_category = jsonObj.job_category;
+      return param.job_category == k1[w].job_category;
     });
     var k3= k2.filter(function(w)){
-      return param.part_or_full = jsonObj.part_or_full;
+      return param.part_or_full == k2[w].part_or_full;
     });
-    var k4= k3.filter(function(w)){
-      return param.location = jsonObj.location;
+    var finalJSON= k3.filter(function(w)){
+      return param.location == .location;
     });
 }
 else{
