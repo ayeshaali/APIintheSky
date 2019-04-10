@@ -10,12 +10,11 @@ var GSParser = require ('google-spreadsheets-parser');
 
 
 
-
+//Takes in a filename (sheet=1;sheet=2); param=Array of Parameters to filter, an apiKey and a callback function;
 exports.ParamSelec = function(filename, param, apikey, callback){
   var jsonObj = {};
   var jsonArray = [];
   var k = checkAPI(apikey);
-
   if(k==true){
       dataJS.loadGoogle(filename,function(){
         doc.getRows(filename, function(err,rows){
@@ -67,6 +66,7 @@ exports.ParamSelec = function(filename, param, apikey, callback){
         return param.summary == w..summary;
       });
     }
+  callback();
   return finalJSON;
   }
 else{
