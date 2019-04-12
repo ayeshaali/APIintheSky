@@ -15,7 +15,6 @@ router.get('/benefitsearch', function(request, response) {
   };
 
   jobJS.paramSelec(1,data,key,function(json) {
-    //will you need to parse array of JSON returned?
     response.json(json);
   })
 
@@ -32,7 +31,6 @@ router.get('/jobsearch', function(request, response) {
   };
 
   jobJS.paramSelec(1,data,key,function(json) {
-    //will you need to parse array of JSON returned
     response.json(json);
   });
 
