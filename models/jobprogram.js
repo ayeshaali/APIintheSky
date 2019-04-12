@@ -4,9 +4,9 @@ var creds = require('../client_secret.json');
 var fs = require("fs");
 var dataJS = require(__dirname +'/googlesheets');
 var Users = require(__dirname +'/User');
-var Papa = require("papaparse");
+//var Papa = require("papaparse");
 var doc = new GoogleSpreadsheet('1DVgMG20OgfLR0leaJvzOiHDxp19EoyGKHTJxUCnxoX0');
-var GSParser = require ('google-spreadsheets-parser');
+//var GSParser = require ('google-spreadsheets-parser');
 
 //Takes in a filename (sheet=1;sheet=2); param=Array of Parameters to filter, an apiKey and a callback function;
 //Function loads the Google Sheet --> Get the Rows --> Check the values of each row and pushes it to a JSONObj. Then we create a new arrays that filter through each of the parameters
