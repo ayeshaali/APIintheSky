@@ -13,11 +13,12 @@ router.get('/benefitsearch', function(request, response) {
     contact: request.query.contact,
     desc: request.query.desc,
   };
-  
+
   jobJS.paramSelec(1,data,key,function(json) {
+    //will you need to parse array of JSON returned?
     response.json(json);
   })
-  
+
 })
 
 router.get('/jobsearch', function(request, response) {
@@ -29,8 +30,10 @@ router.get('/jobsearch', function(request, response) {
     service: request.query.service,
     location: request.query.location,
   };
-  
+
   jobJS.paramSelec(1,data,key,function(json) {
+    //will you need to parse array of JSON returned
     response.json(json);
-  })
+  });
+
 })

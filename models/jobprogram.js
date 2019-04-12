@@ -31,7 +31,8 @@ exports.ParamSelec = function(filename, param, apikey, callback){
             }
           });
         });
-    if(filename==1){
+    //checks which File and Parses for DETAILS
+      if(filename==1){
         var k = jsonArray.filter(function(w){
           return param.agency == w.agency;
         });
@@ -66,13 +67,14 @@ exports.ParamSelec = function(filename, param, apikey, callback){
         return param.summary == w..summary;
       });
     }
-  callback(); //see if this is necessary
   return finalJSON;
+  callback(); //see if this is necessary
   }
 else{
     console.log("APIKey was not accepted");
   }
 }
+
 function checkAPI(apikey){
   var k = Users.getUser(apikey);
   if(k==true){
