@@ -22,7 +22,7 @@ router.post('/users',function(req,res){
     name: req.body.user_name,
     pswd: req.body.pswd
   }
-  
+
   var feedback = {
     failure: 0
   }
@@ -73,14 +73,14 @@ router.put('/user/:id', function (req, res) {
     name: req.body.player_name,
     pswd: req.body.pswd
   }
-  
+
   var feedback = {
     failure:0
   }
-  
+
   res.status(200);
   res.setHeader('Content-Type', 'text/html')
-  
+
   if (u.name==null||u.name==""||u.pswd==null||u.pswd==""){
       console.log("inv");
       result= false;
