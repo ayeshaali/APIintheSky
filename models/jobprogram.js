@@ -1,6 +1,6 @@
 
 var GoogleSpreadsheet = require('google-spreadsheet');
-var creds = require('../client_secret.json');
+var creds = require(__dirname +'/client_secret.json');
 var fs = require("fs");
 var dataJS = require(__dirname +'/googlesheets');
 var Users = require(__dirname +'/User');
@@ -40,19 +40,19 @@ exports.ParamSelec = function(filename, param, apikey, callback){
           return param.agency == w.agency;
         });
         console.log("Array 1: File 1" + k[0]);
-        var k1 = k.filter(function(w)){
+        var k1 = k.filter(function(w){
           return param.business_title == w.business_title;
         });
         console.log("Array 2:File 1" + k1[0]);
-        var k2 = k1.filter(function(w)){
+        var k2 = k1.filter(function(w){
           return param.job_category == w.job_category;
         });
         console.log("Array 3:File 1" + k2[0]);
-        var k3= k2.filter(function(w)){
+        var k3= k2.filter(function(w){
           return param.part_or_full == w.part_or_full;
         });
         console.log("Array 4: File 1" + k3[0]);
-        var finalJSON= k3.filter(function(w)){
+        var finalJSON= k3.filter(function(w){
           return param.location == w.location;
         });
         console.log("Array Final: File 1" + finalJSON[0]);
@@ -63,20 +63,20 @@ exports.ParamSelec = function(filename, param, apikey, callback){
         return param.program_name == w.program_name;
       });
       console.log("Array 1: File 2" + k[0]);
-      var k1 = k.filter(function(w)){
-        return param.benefit_type == w..benefit_type;
+      var k1 = k.filter(function(w){
+        return param.benefit_type == w.benefit_type;
       });
       console.log("Array 2: File 2" + k1[0]);
-      var k2 = k1.filter(function(w)){
+      var k2 = k1.filter(function(w){
         return param.population_served==w.population_served;
       });
       console.log("Array 3: File 2" + k2[0]);
-      var k3= k2.filter(function(w)){
-        return param.contact_info== w..contact_info;
+      var k3= k2.filter(function(w){
+        return param.contact_info== w.contact_info;
       });
       console.log("Array 4: File 2" + k3[0]);
-      var finalJSON= k3.filter(function(w)){
-        return param.summary == w..summary;
+      var finalJSON= k3.filter(function(w){
+        return param.summary == w.summary;
       });
       console.log("Array Final: File 2" + finalJSON[0]);
     }
@@ -93,7 +93,7 @@ exports.loadResource = function(filename, name, key, callback){
   var k = checkAPI(apikey);
   var value;
     if(k==true){
-      dataJS.loadGoogle(filename, function()){
+      dataJS.loadGoogle(filename, function(){
         doc.getRows(filename, function(err,rows){
           for(var i=0; i<rows.length; i++){
             if(rows.name.trim() == name.trim()){
@@ -110,7 +110,7 @@ exports.loadResource = function(filename, name, key, callback){
         });
         callback();
         return jsonObj;
-      }
+      });
     }
 }
 function checkAPI(apikey){

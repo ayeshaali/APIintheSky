@@ -20,6 +20,7 @@ exports.getUser = function(user_id, callback) {
 exports.createUser = function(name, pswd, callback) {
     var result = true;
     var feedbackN = 0;
+    console.log(name+" "+pswd)
     if (name==null||name==""||pswd==null||pswd==""){
         result= false;
         feedbackN = 42;
@@ -31,14 +32,13 @@ exports.createUser = function(name, pswd, callback) {
         user_key = makeid(10);
       }
 
-      exports.getUser(user_id, function(user){
+      exports.getUser(name, function(user){
         if (user.name != "notarealuser") {
           result = false;
           feedbackN = 10;
         }
 
         if (result) {
-          date=returnDate();
           var new_obj = {
             "name": name,
             "pswd": pswd,
