@@ -12,7 +12,7 @@
   </div>
   <div id="enter_name">
     <form action="<%if(user==null){%>/users<%}else{%>/user/<%=user.name%>?_method=PUT<%}%>" method="post">
-      Username: <input type="text" id="enter_username" name="player_name" value = "<%if (user!=null){%><%=user.name%><%} else {%><%}%>"><br>
+      Username: <input type="text" id="enter_username" name="name" value = "<%if (user!=null){%><%=user.name%><%} else {%><%}%>"><br>
       PSWD: <input type="text" id="enter_psw" name="pswd" value = "<%if (user!=null){%><%=user.pswd%><%}%>"><br>
       <br>
       <button type="submit" id = "enter_name_button"><%if(user==null){%>Create Account<%}else{%>Modify Account<%}%></button>

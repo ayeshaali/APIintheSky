@@ -1,8 +1,8 @@
 {
-  "name": "prssadiayesha",
+  "name": "apiinthesky",
   "version": "1.0.0",
   "description": "",
-  "main": "mvc_server.js",
+  "main": "server.js",
   "dependencies": {
     "ejs": "^2.6.1",
     "express": "^4.16.4",
@@ -16,9 +16,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "start": "node mvc_server.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "ayesha ali and sadi gulcelik",
+  "author": "ayesha ali, mit ramesh, tommy brecher",
   "license": "ISC"
 }
