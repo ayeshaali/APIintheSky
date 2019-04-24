@@ -88,9 +88,7 @@ else{
     console.log("APIKey was not accepted");
   }
 }
-<<<<<<< HEAD
 
-=======
 exports.loadResource = function(filename, name, key, callback){
   var jsonObj = {};
   var k = checkAPI(apikey);
@@ -116,7 +114,7 @@ exports.loadResource = function(filename, name, key, callback){
       });
     }
 }
->>>>>>> 5ac97eb0b2e99eab79fe508a3dc0a1fe7aa76dd9
+
 function checkAPI(apikey){
   var k = Users.getUser(apikey);
   if(k==true){
