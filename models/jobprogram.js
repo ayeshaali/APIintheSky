@@ -88,31 +88,7 @@ else{
     console.log("APIKey was not accepted");
   }
 }
-exports.loadResource = function(filename, name, key, callback){
-  var jsonObj = {};
-  var k = checkAPI(apikey);
-  var value;
-    if(k==true){
-      dataJS.loadGoogle(filename, function()){
-        doc.getRows(filename, function(err,rows){
-          for(var i=0; i<rows.length; i++){
-            if(rows.name.trim() == name.trim()){
-              value = Object.values(rows[i]);
-              break;
-            }
-          }
-          if(filename==1){
-            jsonObj = {"agency": value[0], "business_titleTitle": value[1], "job_category": value[3], "part_or_full": value[4], "Location": value[8]};
-          }
-          else{
-            jsonObj = {"program_name": value[1], "benefit_type": value[2]  , "population_served": value[5] , "contact_info":value[9] ,  "summary": value[7] };
-          }
-        });
-        callback();
-        return jsonObj;
-      }
-    }
-}
+
 function checkAPI(apikey){
   var k = Users.getUser(apikey);
   if(k==true){
