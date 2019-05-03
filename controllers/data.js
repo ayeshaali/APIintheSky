@@ -33,5 +33,19 @@ router.get('/jobsearch', function(request, response) {
   jobJS.paramSelec(1,data,key,function(json) {
     response.json(json);
   });
+})
 
+router.get('/onejob', function(request, response) {
+  var key = request.query.apikey;
+  var data={
+    
+  };
+})
+
+
+router.get('/onebenefit', function(request, response) {
+  var key = request.query.apikey;
+  var data={
+    
+  };
 })
