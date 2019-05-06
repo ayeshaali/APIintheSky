@@ -27,10 +27,10 @@ router.post('/users',function(req,res){
     failure: 0
   }
   console.log(feedback);
-  Users.createUser(u.name, u.pswd, function(result, feedbackN){
+  Users.createUser(u.name, u.pswd, function(result, user, feedbackN){
     console.log(result);
     if (result) {
-      res.redirect('/');
+      res.render('user_details', {user:user, feedback:feedback, title:"modify"});
     } else {
       var u;
       feedback["failure"] = feedbackN;
