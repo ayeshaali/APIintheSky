@@ -140,7 +140,9 @@ exports.loadResource = function(filename, name, key, callback){
 }
 
 function checkAPI(apikey){
-  var k = Users.getUser(apikey);
+  var k = Users.getUserbyKey(apikey, function(){
+    console.log("User key accessed");
+  });
   if(k==true){
       console.log("API Key has been Checked: API Key is valid");
       return true;
