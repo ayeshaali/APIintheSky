@@ -26,7 +26,6 @@ router.post('/users',function(req,res){
   var feedback = {
     failure: 0
   }
-  console.log(feedback);
   Users.createUser(u.name, u.pswd, function(result, feedbackN){
     console.log(result);
     if (result) {

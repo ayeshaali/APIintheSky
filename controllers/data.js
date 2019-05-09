@@ -38,14 +38,20 @@ router.get('/jobsearch', function(request, response) {
 router.get('/onejob', function(request, response) {
   var key = request.query.apikey;
   var data={
-    
+    id: request.query.id
   };
+  jobJS.paramSelec(data.id,1,key,function(json) {
+    response.json(json);
+  });
 })
 
 
 router.get('/onebenefit', function(request, response) {
   var key = request.query.apikey;
   var data={
-    
+    id: request.query.id
   };
+  jobJS.paramSelec(data.id,2,key,function(json) {
+    response.json(json);
+  });
 })
