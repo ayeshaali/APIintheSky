@@ -16,6 +16,23 @@ exports.getUser = function(user_id, callback) {
   return true;
 }
 
+exports.getUserbyKey = function(apikey, callback){
+  var k = false;
+  var user = createBlankUser();
+  var all_users = dataJS.loadGoogle(3, function(all_users) {
+    for(var i=0; i<all_users.length; i++){
+      if(all_users[i].key==apikey.trim()){
+        user = all_users[i];
+        k = true;
+        break;
+      }
+    }
+  callback(user);
+  });
+  return k;
+
+}
+
 //creates a user
 exports.createUser = function(name, pswd, callback) {
     var result = true;
@@ -25,7 +42,7 @@ exports.createUser = function(name, pswd, callback) {
         result= false;
         feedbackN = 42;
     }
-    
+
     var user_key = makeid(10);
     dataJS.getAllKeys(function(keys){
       while (keys.includes(user_key)){
@@ -88,4 +105,3 @@ var createBlankUser= function(){
   };
   return user;
 }
-
