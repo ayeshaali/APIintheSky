@@ -61,46 +61,46 @@ exports.ParamSelec = function(filename, param, apikey, callback){
     //checks which File and Parses for DETAILS
       if(filename==1){
         var k = jsonArray.filter(function(w){
-          return param.agency == w.agency;
+          return param.agency.contains(w.agency);
         });
         console.log("Array 1: File 1" + k[0]);
         var k1 = k.filter(function(w){
-          return param.business_title == w.business_title;
+          return param.business_title.contains(w.business_title);
         });
         console.log("Array 2:File 1" + k1[0]);
         var k2 = k1.filter(function(w){
-          return param.job_category == w.job_category;
+          return param.job_category.contains(w.job_category);
         });
         console.log("Array 3:File 1" + k2[0]);
         var k3= k2.filter(function(w){
-          return param.part_or_full == w.part_or_full;
+          return param.part_or_full.contains(w.part_or_full);
         });
         console.log("Array 4: File 1" + k3[0]);
         var finalJSON= k3.filter(function(w){
-          return param.location == w.location;
+          return param.location.contains(w.location);
         });
         console.log("Array Final: File 1" + finalJSON[0]);
     }
 
     else{
       var k = jsonArray.filter(function(w){
-        return param.program_name == w.program_name;
+        return param.program_name.contains(w.program_name);
       });
       console.log("Array 1: File 2" + k[0]);
       var k1 = k.filter(function(w){
-        return param.benefit_type == w.benefit_type;
+        return param.benefit_type.contains(w.benefit_type);
       });
       console.log("Array 2: File 2" + k1[0]);
       var k2 = k1.filter(function(w){
-        return param.population_served==w.population_served;
+        return param.population_served.contains(w.population_served);
       });
       console.log("Array 3: File 2" + k2[0]);
       var k3= k2.filter(function(w){
-        return param.contact_info== w.contact_info;
+        return param.contact_info.contains(w.contact_info);
       });
       console.log("Array 4: File 2" + k3[0]);
       var finalJSON= k3.filter(function(w){
-        return param.summary == w.summary;
+        return param.summary.contains(w.summary);
       });
       console.log("Array Final: File 2" + finalJSON[0]);
     }
