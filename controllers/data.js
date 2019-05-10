@@ -4,7 +4,7 @@ var router = express.Router();
 var dataJS = require('../models/googlesheets');
 var jobJS = require('../models/jobprogram');
 
-router.post('/benefitsearch', function(request, response) {
+router.get('/benefitsearch', function(request, response) {
   var key = request.query.apikey
   var data={
     name: request.query.name,
@@ -14,7 +14,7 @@ router.post('/benefitsearch', function(request, response) {
     desc: request.query.desc,
   };
 
-  jobJS.ParamSelec(1,data,key,function(json) {
+  jobJS.ParamSelec(2,data,key,function(json) {
     response.json(json);
   })
 
