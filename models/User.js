@@ -62,10 +62,11 @@ exports.createUser = function(name, pswd, callback) {
             "key": user_key
           }
           dataJS.createRow(new_obj, 3, function(){
-            callback(true, feedbackN);
+            callback(true, new_obj, feedbackN);
           })
         } else {
-          callback(false, feedbackN);
+          var obj;
+          callback(false, obj, feedbackN);
         }
       })
 
