@@ -58,62 +58,62 @@ exports.ParamSelec = function(filename, param, apikey, callback){
           if(filename==1){
             var k = jsonArray.filter(function(w){
               if(w!==""){
-                return w.agency.includes(param.agency);
+                return w.agency.trim().toLowerCase().includes(param.agency.trim().toLowerCase());
               }
             });
             console.log("Array 1: File 1" + k[0]);
             var k1 = k.filter(function(w){
               if(w!==""){
-                return w.business_title.includes(param.business_title);
+                return w.business_title.trim().toLowerCase().includes(param.business_title.trim().toLowerCase());
               }
             });
             console.log("Array 2:File 1" + k1[0]);
             var k2 = k1.filter(function(w){
               if(w!==""){
-                return w.job_category.includes(param.job_category);
+                return w.job_category.trim().toLowerCase().includes(param.job_category.trim().toLowerCase());
               }
             });
             console.log("Array 3:File 1" + k2[0]);
             var k3= k2.filter(function(w){
               if(w!==""){
-                return w.part_or_full.includes(param.part_or_full);
+                return w.part_or_full.trim().toLowerCase().includes(param.part_or_full.trim().toLowerCase());
               }
             });
             console.log("Array 4: File 1" + k3[0]);
             var finalJSON= k3.filter(function(w){
               if(w!==""){
-                return w.location.includes(param.location);
+                return w.location.trim().toLowerCase().includes(param.location.trim().toLowerCase());
               }
             });
             console.log("Array Final: File 1" + finalJSON[0]);
           } else{
             var k = jsonArray.filter(function(w){
               if(w!==""){
-                return w.program_name.includes(param.program_name);
+                return w.program_name.trim().toLowerCase().includes(param.program_name.trim().toLowerCase());
               }
             });
             console.log("Array 1: File 2" + k[0]);
             var k1 = k.filter(function(w){
               if(w!==""){
-                return w.benefit_type.includes(param.benefit_type);
+                return w.benefit_type.trim().toLowerCase().includes(param.benefit_type.trim().toLowerCase());
               }
             });
             console.log("Array 2: File 2" + k1[0]);
             var k2 = k1.filter(function(w){
               if(w!==""){
-                return w.population_served.includes(param.population_served);
+                return w.population_served.trim().toLowerCase().includes(param.population_served.trim().toLowerCase());
               }
             });
             console.log("Array 3: File 2" + k2[0]);
             var k3= k2.filter(function(w){
               if(w!==""){
-                return w.contact_info.includes(param.contact_info);
+                return w.contact_info.trim().toLowerCase().includes(param.contact_info.trim().toLowerCase());
               }
             });
             console.log("Array 4: File 2" + k3[0]);
             var finalJSON= k3.filter(function(w){
               if(w!==""){
-                return w.summary.includes(param.summary);
+                return w.summary.trim().toLowerCase().includes(param.summary.trim().toLowerCase());
               }
             });
             console.log("Array Final: File 2" + finalJSON[0]);
