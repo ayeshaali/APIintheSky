@@ -44,10 +44,10 @@ exports.ParamSelec = function(filename, param, apikey, callback){
           for(var i =0; i<rows.length; i++){
             var value = Object.values(rows[i]);
             if(filename==1){
-              jsonObj = {"agency": value[4], "business_title": value[5], "job_category": value[7], "part_or_full": value[8], "location": value[12], "ID": value[13]};
+              jsonObj = {"agency": value[4], "business_title": value[5], "job_category": value[7], "part_or_full": value[8], "location": value[12], "ID": i};
               // console.log(jsonObj);
             } else{
-              jsonObj = {"program_name": value[1], "benefit_type": value[2]  , "population_served": value[5] , "contact_info":value[9] ,  "summary": value[7], "ID": value[8]};
+              jsonObj = {"program_name": value[1], "benefit_type": value[2]  , "population_served": value[5] , "contact_info":value[9] ,  "summary": value[7], "ID": i};
             }
             jsonArray.push(jsonObj);
           }
