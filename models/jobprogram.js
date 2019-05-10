@@ -8,6 +8,30 @@ var Users = require(__dirname +'/User');
 var doc = new GoogleSpreadsheet('1DVgMG20OgfLR0leaJvzOiHDxp19EoyGKHTJxUCnxoX0');
 //var GSParser = require ('google-spreadsheets-parser');
 
+exports.getJobById = function(id, filename, apikey, callback){
+  var jsonArray = [];
+  var k = checkAPI(apikey);
+  if(k==true){
+    dataJS.loadGoogle(filename,function(){
+      doc.getRows(filename, function(err, rows){
+        for(var i = 0; i<rows.length; i++){
+          var value = Object.values(rows[i]);
+          if(value [0] == this.id){
+            jsonArray.push(rows[i]);
+            break;
+          }
+          else{
+            continue;
+          }
+        }
+      });
+      callback();
+    });
+  return jsonArray;
+  }
+}
+
+
 //Takes in a filename (sheet=1;sheet=2); param=Array of Parameters to filter, an apiKey and a callback function;
 //Function loads the Google Sheet --> Get the Rows --> Check the values of each row and pushes it to a JSONObj. Then we create a new arrays that filter through each of the parameters
 exports.ParamSelec = function(filename, param, apikey, callback){
@@ -23,10 +47,10 @@ exports.ParamSelec = function(filename, param, apikey, callback){
                   console.log("Values object for this row" + value[k]);
                 }
               if(filename==1){
-                jsonObj = {"agency": value[0], "business_titleTitle": value[1], "job_category": value[3], "part_or_full": value[4], "Location": value[8]};
+                jsonObj = {"agency": value[0], "business_titleTitle": value[1], "job_category": value[3], "part_or_full": value[4], "Location": value[8], "ID": value[9]};
               }
               else{
-                jsonObj = {"program_name": value[1], "benefit_type": value[2]  , "population_served": value[5] , "contact_info":value[9] ,  "summary": value[7] };
+                jsonObj = {"program_name": value[1], "benefit_type": value[2]  , "population_served": value[5] , "contact_info":value[9] ,  "summary": value[7], "ID": value[8]};
               }
               console.log("jsonObj" + jsonObj);
               jsonArray.push(jsonObj);
@@ -116,7 +140,9 @@ exports.loadResource = function(filename, name, key, callback){
 }
 
 function checkAPI(apikey){
-  var k = Users.getUser(apikey);
+  var k = Users.getUserbyKey(apikey, function(){
+    console.log("User key accessed");
+  });
   if(k==true){
       console.log("API Key has been Checked: API Key is valid");
       return true;
