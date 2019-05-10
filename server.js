@@ -12,6 +12,8 @@ var Info = require(__dirname + '/models/jobprogram.js');
 var methodOverride = require('method-override');
 app.use(methodOverride('_method'));
 
+app.use(require('./controllers/data'));
+
 //set up server
 app.use(express.static('public'));
 app.set('views', __dirname + '/views');
