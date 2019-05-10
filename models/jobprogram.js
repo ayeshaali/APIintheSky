@@ -54,72 +54,72 @@ exports.ParamSelec = function(filename, param, apikey, callback){
             }
             jsonArray.push(jsonObj);
           }
-          
+
           if(filename==1){
             var k = jsonArray.filter(function(w){
               if(w!==""){
-                return param.agency.includes(w.agency);
+                return w.agency.includes(param.agency);
               }
             });
             console.log("Array 1: File 1" + k[0]);
             var k1 = k.filter(function(w){
               if(w!==""){
-                return param.business_title.includes(w.business_title);
+                return w.business_title.includes(param.business_title);
               }
             });
             console.log("Array 2:File 1" + k1[0]);
             var k2 = k1.filter(function(w){
               if(w!==""){
-                return param.job_category.includes(w.job_category);
+                return w.job_category.includes(param.job_category);
               }
             });
             console.log("Array 3:File 1" + k2[0]);
             var k3= k2.filter(function(w){
               if(w!==""){
-                return param.part_or_full.includes(w.part_or_full);
+                return w.part_or_full.includes(param.part_or_full);
               }
             });
             console.log("Array 4: File 1" + k3[0]);
             var finalJSON= k3.filter(function(w){
               if(w!==""){
-                return param.location.includes(w.location);
+                return w.location.includes(param.location);
               }
             });
             console.log("Array Final: File 1" + finalJSON[0]);
           } else{
             var k = jsonArray.filter(function(w){
               if(w!==""){
-                return param.program_name.includes(w.program_name);
+                return w.program_name.includes(param.program_name);
               }
             });
             console.log("Array 1: File 2" + k[0]);
             var k1 = k.filter(function(w){
               if(w!==""){
-                return param.benefit_type.includes(w.benefit_type);
+                return w.benefit_type.includes(param.benefit_type);
               }
             });
             console.log("Array 2: File 2" + k1[0]);
             var k2 = k1.filter(function(w){
               if(w!==""){
-                return param.population_served.includes(w.population_served);
+                return w.population_served.includes(param.population_served);
               }
             });
             console.log("Array 3: File 2" + k2[0]);
             var k3= k2.filter(function(w){
               if(w!==""){
-                return param.contact_info.includes(w.contact_info);
+                return w.contact_info.includes(param.contact_info);
               }
             });
             console.log("Array 4: File 2" + k3[0]);
             var finalJSON= k3.filter(function(w){
               if(w!==""){
-                return param.summary.includes(w.summary);
+                return w.summary.includes(param.summary);
               }
             });
             console.log("Array Final: File 2" + finalJSON[0]);
           }
           console.log(finalJSON)
-          callback(finalJSON); 
+          callback(finalJSON);
     })
   }
 });    //checks which File and Parses for DETAILS
