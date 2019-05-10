@@ -27,10 +27,9 @@ exports.getUserbyKey = function(apikey, callback){
         break;
       }
     }
-  callback(user);
+    console.log(k);
+    callback(k);
   });
-  return k;
-
 }
 
 //creates a user

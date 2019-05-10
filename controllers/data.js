@@ -4,7 +4,7 @@ var router = express.Router();
 var dataJS = require('../models/googlesheets');
 var jobJS = require('../models/jobprogram');
 
-router.get('/benefitsearch', function(request, response) {
+router.post('/benefitsearch', function(request, response) {
   var key = request.query.apikey
   var data={
     name: request.query.name,
@@ -14,7 +14,7 @@ router.get('/benefitsearch', function(request, response) {
     desc: request.query.desc,
   };
 
-  jobJS.paramSelec(1,data,key,function(json) {
+  jobJS.ParamSelec(1,data,key,function(json) {
     response.json(json);
   })
 
@@ -29,9 +29,10 @@ router.get('/jobsearch', function(request, response) {
     service: request.query.service,
     location: request.query.location,
   };
-
-  jobJS.paramSelec(1,data,key,function(json) {
-    response.json(json);
+  
+  jobJS.ParamSelec(1,data,key,function(json) {
+    console.log(json)
+    response.send(json);
   });
 })
 
