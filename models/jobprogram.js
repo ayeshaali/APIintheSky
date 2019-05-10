@@ -47,7 +47,7 @@ exports.ParamSelec = function(filename, param, apikey, callback){
               console.log("Values object for this row" + value[k]);
             }
             if(filename==1){
-              jsonObj = {"agency": value[0], "business_titleTitle": value[1], "job_category": value[3], "part_or_full": value[4], "Location": value[8], "ID": value[9]};
+              jsonObj = {"agency": value[4], "business_titleTitle": value[5], "job_category": value[7], "part_or_full": value[8], "Location": value[12], "ID": value[13]};
               console.log(jsonObj);
             } else{
               jsonObj = {"program_name": value[1], "benefit_type": value[2]  , "population_served": value[5] , "contact_info":value[9] ,  "summary": value[7], "ID": value[8]};
