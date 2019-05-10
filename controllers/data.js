@@ -5,7 +5,7 @@ var dataJS = require('../models/googlesheets');
 var jobJS = require('../models/jobprogram');
 
 router.get('/benefitsearch', function(request, response) {
-  var key = request.query.apikey,
+  var key = request.query.apikey
   var data={
     name: request.query.name,
     type: request.query.type,
