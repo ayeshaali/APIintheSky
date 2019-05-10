@@ -7,25 +7,26 @@ var fs = require('fs');
 var favicon = require('serve-favicon');
 var app = express();
 var Users = require(__dirname +'/models/User');
-var Routes = require(__dirname +'/controllers/user');
 var Info = require(__dirname + '/models/jobprogram.js');
 var methodOverride = require('method-override');
+//set up server
+
 app.use(methodOverride('_method'));
 
-app.use(require('./controllers/data'));
-
-//set up server
 app.use(express.static('public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.urlencoded());
 
-var port = process.env.PORT || 5000;
+
+var port = process.env.PORT || 3000;
 app.listen(port, function(){
   console.log('Server started at '+ new Date()+', on port ' + port+'!');
 });
 
-app.use(require('./controllers/user'));
+
+app.use(require(__dirname +'/controllers/user'));
+app.use(require(__dirname +'/controllers/data'));
 //first request, renders index
 app.get('/', function(request, response){
   var user_data={};

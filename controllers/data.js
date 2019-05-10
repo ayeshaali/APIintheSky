@@ -55,3 +55,6 @@ router.get('/onebenefit', function(request, response) {
     response.json(json);
   });
 })
+
+module.exports = router;
+
