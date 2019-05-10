@@ -64,19 +64,19 @@ exports.ParamSelec = function(filename, param, apikey, callback){
             console.log("Array 1: File 1" + k[0]);
             var k1 = k.filter(function(w){
               if(w!==""){
-                return w.business_title.trim().toLowerCase().includes(param.business_title.trim().toLowerCase());
+                return w.business_title.trim().toLowerCase().includes(param.title.trim().toLowerCase());
               }
             });
             console.log("Array 2:File 1" + k1[0]);
             var k2 = k1.filter(function(w){
               if(w!==""){
-                return w.job_category.trim().toLowerCase().includes(param.job_category.trim().toLowerCase());
+                return w.job_category.trim().toLowerCase().includes(param.category.trim().toLowerCase());
               }
             });
             console.log("Array 3:File 1" + k2[0]);
             var k3= k2.filter(function(w){
               if(w!==""){
-                return w.part_or_full.trim().toLowerCase().includes(param.part_or_full.trim().toLowerCase());
+                return w.part_or_full.trim().toLowerCase().includes(param.service.trim().toLowerCase().charAt(0));
               }
             });
             console.log("Array 4: File 1" + k3[0]);

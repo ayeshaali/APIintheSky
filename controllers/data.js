@@ -30,6 +30,8 @@ router.get('/jobsearch', function(request, response) {
     location: request.query.location,
   };
   
+  console.log(data.service)
+  
   jobJS.ParamSelec(1,data,key,function(json) {
     console.log(json)
     response.send(json);
