@@ -29,7 +29,7 @@ router.get('/jobsearch', function(request, response) {
     service: request.query.service,
     location: request.query.location,
   };
-  
+
   jobJS.ParamSelec(1,data,key,function(json) {
     response.json(json);
   });
@@ -40,7 +40,7 @@ router.get('/onejob', function(request, response) {
   var data={
     id: request.query.id
   };
-  jobJS.paramSelec(data.id,1,key,function(json) {
+  jobJS.ParamSelec(data.id,1,key,function(json) {
     response.json(json);
   });
 })
@@ -57,4 +57,3 @@ router.get('/onebenefit', function(request, response) {
 })
 
 module.exports = router;
-
